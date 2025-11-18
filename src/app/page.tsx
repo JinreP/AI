@@ -1,5 +1,8 @@
 "use client";
 
+import { ChatBot } from "@/components/Chat";
+import { Content } from "@/components/Content";
+import { Navbar } from "@/components/Navbar";
 import { useEffect, useState } from "react";
 
 type User = {
@@ -8,23 +11,18 @@ type User = {
   age: number;
 };
 export default function Home() {
-  const [users, setUsers] = useState<User[]>([]);
+  // const [users, setUsers] = useState<User[]>([]);
 
-  useEffect(() => {
-    fetch("/api/users")
-      .then((res) => res.json())
-      .then((res) => setUsers(res.users));
-  }, []);
+  // useEffect(() => {
+  //   fetch("/api/users")
+  //     .then((res) => res.json())
+  //     .then((res) => setUsers(res.users));
+  // }, []);
   return (
-    <div className="w-full h-screen flex flex-col justify-center items-center">
-      {users.map((user, i) => {
-        return (
-          <div key={i}>
-            <h1>Name :{user.name}</h1>
-            <h1>Age :{user.age}</h1>
-          </div>
-        );
-      })}
+    <div className="w-full h-screen ">
+      <Navbar />
+      <Content />
+      <ChatBot />
     </div>
   );
 }

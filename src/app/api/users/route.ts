@@ -24,8 +24,20 @@ export async function DELETE(req: NextRequest) {
   if (!id) {
     return Response.json({ message: "id is required" });
   }
-  
+
   await User.findByIdAndDelete(id);
 
   return Response.json({ message: "user is deleted" });
+}
+
+export async function PATCH(req: Request) {
+  await connectDB();
+
+  const { id } = await req.json();
+
+  if (!id) return Response.json({ message: "id is required" });
+
+  await User.findByIdAndUpdate(id);
+
+  return Response.json({ message: "user is updaded" });
 }
