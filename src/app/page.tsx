@@ -1,28 +1,26 @@
 "use client";
 
+import { Analysis } from "@/components/Analysis";
+import { Buttons } from "@/components/Buttons";
 import { ChatBot } from "@/components/Chat";
 import { Content } from "@/components/Content";
+import { Ingredient } from "@/components/Ingredient";
 import { Navbar } from "@/components/Navbar";
 import { useEffect, useState } from "react";
 
-type User = {
-  id: number;
-  name: string;
-  age: number;
-};
 export default function Home() {
-  // const [users, setUsers] = useState<User[]>([]);
+  const [page, setPage] = useState(0);
 
-  // useEffect(() => {
-  //   fetch("/api/users")
-  //     .then((res) => res.json())
-  //     .then((res) => setUsers(res.users));
-  // }, []);
   return (
-    <div className="w-full h-screen ">
-      <Navbar />
-      <Content />
+    <div className="w-full h-screen flex flex-col items-center justify-center">
       <ChatBot />
+      <Buttons page={page} setPage={setPage} />
+
+      {page === 0 && <Analysis />}
+
+      {page === 1 && <Ingredient />}
+
+      {page === 2 && <Content />}
     </div>
   );
 }
