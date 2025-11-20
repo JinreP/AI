@@ -38,6 +38,8 @@ export function Analysis() {
 
       if (response.ok) {
         const data = await response.json();
+        console.log("API data", data);
+
         setDetectedObjects(data.objects || []);
       } else {
         console.error("Failed to analyze image");
@@ -83,33 +85,6 @@ export function Analysis() {
             </div>
           </div>
         )}
-        {/* {!analyzing ? (
-          <p className="text-gray-500">
-            First, enter your image to recognize an ingredients.
-          </p>
-        ) : (
-          <div>
-            {detectedObjects.length > 0 && (
-              <div>
-                <div className="mt-4">
-                  <h3 className="font-bold ">Detected Objects:</h3>
-                  <ul className="">
-                    {detectedObjects.map((obj, index) => (
-                      <li key={index} className="text-sm">
-                        <span className="">{obj.label}</span>
-                        {obj.score && (
-                          <span className="text-gray-600 ml-2">
-                            ({(obj.score * 100).toFixed(1)}%)
-                          </span>
-                        )}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            )}
-          </div>
-        )} */}
       </div>
     </div>
   );

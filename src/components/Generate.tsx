@@ -28,7 +28,7 @@ export function Generate(Props: any) {
         </Button>
         {uploadedImageUrl && (
           <Image
-            className="absolute  left-2 top-0"
+            className="absolute  w-[220px] he-[220px] left-2 top-0"
             src={uploadedImageUrl}
             alt="uploaded image"
             width={220}
